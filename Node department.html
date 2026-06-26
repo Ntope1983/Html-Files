@@ -1,166 +1,238 @@
 <style>
-.org-container{
-    max-width:1400px;
-    margin:auto;
-    font-family:'Segoe UI',sans-serif;
-    padding:20px;
+
+:root{
+    --primary:#003366;
+    --secondary:#005792;
+    --accent:#0077cc;
+    --light:#f8fafc;
+    --border:#dbe5ef;
 }
 
-.org-row{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.org-card{
+details{
+    margin-bottom:16px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
     background:#fff;
-    border:1px solid #dbe5ef;
-    border-radius:12px;
-    padding:15px;
-    min-width:260px;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+    transition:all .3s ease;
 }
 
-.org-card h3{
-    margin:0;
-    color:#003366;
-    font-size:18px;
+details:hover{
+    box-shadow:0 8px 24px rgba(0,0,0,.10);
+    transform:translateY(-2px);
 }
 
-.org-card ul{
+summary{
     list-style:none;
-    margin:15px 0 0;
-    padding:0;
-    text-align:left;
+    cursor:pointer;
+    padding:18px 22px;
+    font-size:18px;
+    font-weight:600;
+    color:#fff;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    transition:.3s;
+    position:relative;
+    user-select:none;
 }
 
-.org-card li{
-    padding:8px 0;
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary::after{
+    content:"+";
+    position:absolute;
+    right:22px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:24px;
+    font-weight:300;
+    transition:.3s;
+}
+
+details[open] summary::after{
+    transform:translateY(-50%) rotate(45deg);
+}
+
+details[open] summary{
+    background:linear-gradient(
+        135deg,
+        #002850,
+        #004d80
+    );
+}
+
+.content{
+    padding:0;
+    background:#fff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+tr{
+    transition:.2s;
+}
+
+tr:nth-child(even){
+    background:#f8fbff;
+}
+
+tr:hover{
+    background:#eef6ff;
+}
+
+td{
+    padding:14px 18px;
     border-bottom:1px solid #edf2f7;
 }
 
-.org-card li:last-child{
-    border-bottom:none;
+td:first-child{
+    font-weight:600;
+    color:var(--primary);
+    width:75%;
 }
 
-.director{
-    background:#003366;
-    color:#fff;
+td:last-child{
+    text-align:right;
+    color:#555;
+    font-family:Consolas, monospace;
 }
 
-.director h3{
-    color:#fff;
+details:last-child{
+    margin-bottom:0;
 }
 
-.support{
-    background:#005792;
-    color:#fff;
+/* Mobile */
+
+@media(max-width:768px){
+
+summary{
+    font-size:16px;
+    padding:16px;
 }
 
-.support h3{
-    color:#fff;
+td{
+    display:block;
+    width:100%!important;
+    padding:10px 15px;
 }
 
-.department{
-    border-top:5px solid #005792;
+td:last-child{
+    text-align:left;
+    padding-top:0;
+    color:#777;
 }
+
+}
+
 </style>
-
-<div class="org-container">
-
-<div class="org-row">
-    <div class="org-card director">
-        <h3>ΔΙΕΥΘΥΝΤΗΣ</h3>
-    </div>
+<details open>
+<summary>📌 ΥΠΑΣΠΙΣΤΗΡΙΟ ΔΙΕΥΘΥΝΤΟΥ</summary>
+<div class="content">
+<table>
+<tr><td>Τηλέφωνο</td><td>__________</td></tr>
+<tr><td>Τηλέφωνο</td><td>__________</td></tr>
+</table>
 </div>
+</details>
 
-<div class="org-row">
-
-    <div class="org-card support">
-        <h3>ΥΠΑΣΠΙΣΤΗΡΙΟ ΔΙΕΥΘΥΝΤΟΥ</h3>
-    </div>
-
-    <div class="org-card support">
-        <h3>ΓΡΑΦΕΙΟ ΝΟΜΙΚΟΥ ΣΥΜΒΟΥΛΟΥ</h3>
-    </div>
-
-    <div class="org-card support">
-        <h3>ΓΡΑΜΜΑΤΕΙΑ</h3>
-    </div>
-
+<details>
+<summary>⚖️ ΓΡΑΦΕΙΟ ΝΟΜΙΚΟΥ ΣΥΜΒΟΥΛΟΥ</summary>
+<div class="content">
+<table>
+<tr><td>Τηλέφωνο</td><td>__________</td></tr>
+</table>
 </div>
+</details>
 
-<div class="org-row">
-
-    <div class="org-card department">
-        <h3>1ο ΤΜΗΜΑ ΚΤΗΜΑΤΟΛΟΓΙΟΥ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Γραφείο Παρακολούθησης</li>
-            <li>Γραφείο Τοπογραφίας</li>
-            <li>Γραφείο Κτηματολογίου</li>
-        </ul>
-    </div>
-
-    <div class="org-card department">
-        <h3>2ο ΤΜΗΜΑ ΔΙΑΧΕΙΡΙΣΗΣ & ΑΞΙΟΠΟΙΗΣΗΣ ΑΚΙΝΗΤΗΣ ΠΕΡΙΟΥΣΙΑΣ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Γραφείο Διαχείρισης</li>
-            <li>Γραφείο Αξιοποίησης</li>
-            <li>Γραφείο Δωρεών & Κληροδοτημάτων</li>
-            <li>Γραφείο Παραχωρήσεων</li>
-        </ul>
-    </div>
-
-    <div class="org-card department">
-        <h3>3ο ΤΜΗΜΑ ΠΡΟΜΗΘΕΙΩΝ & ΕΡΓΩΝ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Γραφείο Υλικών - Προμηθειών</li>
-            <li>Γραφείο Μελετών</li>
-            <li>Γραφείο Κατασκευών</li>
-        </ul>
-    </div>
-
+<details>
+<summary>📋 ΓΡΑΜΜΑΤΕΙΑ</summary>
+<div class="content">
+<table>
+<tr><td>Γραμματεία</td><td>__________</td></tr>
+</table>
 </div>
+</details>
 
-<div class="org-row">
-
-    <div class="org-card department">
-        <h3>4ο ΤΜΗΜΑ ΑΠΑΛΛΟΤΡΙΩΣΕΩΝ & ΕΠΙΤΑΞΕΩΝ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Γραφείο Απαλλοτριώσεων</li>
-            <li>Γραφείο Επιτάξεων</li>
-        </ul>
-    </div>
-
-    <div class="org-card department">
-        <h3>5ο ΤΜΗΜΑ ΟΙΚΟΝΟΜΙΚΩΝ ΥΠΗΡΕΣΙΩΝ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Λογιστήριο</li>
-            <li>Γραφείο Ελέγχου & Εκκαθάρισης</li>
-            <li>Γραφείο Στατιστικής Παρακολούθησης</li>
-        </ul>
-    </div>
-
-    <div class="org-card department">
-        <h3>6ο ΤΜΗΜΑ ΔΙΟΙΚΗΤΙΚΩΝ ΥΠΗΡΕΣΙΩΝ</h3>
-        <ul>
-            <li>Προϊστάμενος Τμήματος</li>
-            <li>Γραφείο Προσωπικού</li>
-            <li>Γραφείο Πληροφοριών</li>
-            <li>Υπεύθυνος Ασφαλείας Πληροφοριακών Συστημάτων</li>
-            <li>Γραφείο Δαπανών</li>
-            <li>Γραφείο Συντήρησης Εγκαταστάσεων</li>
-        </ul>
-    </div>
-
+<details>
+<summary>🏢 1ο ΤΜΗΜΑ ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ ΑΚΙΝΗΤΩΝ ,ΤΟΠΟΓΡΑΦΙΑΣ ΚΑΙ ΚΤΗΜΑΤΟΛΟΓΙΟΥ</summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Παρακολούθησης Ακινήτων</td><td>__________</td></tr>
+<tr><td>Γραφείο Τοπογραφίας</td><td>__________</td></tr>
+<tr><td>Γραφείο Κτηματολογίου</td><td>__________</td></tr>
+</table>
 </div>
+</details>
 
+<details>
+<summary>🏘️ 2ο ΤΜΗΜΑ ΔΙΑΧΕΙΡΙΣΗΣ & ΑΞΙΟΠΟΙΗΣΗΣ ΑΚΙΝΗΤΩΝ και ΠΟΛΕΟΔΟΜΙΑΣ</summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Διαχείρις Ακινήτωνης</td><td>__________</td></tr>
+<tr><td>Γραφείο Αξιοποίησης Ακινήτων</td><td>__________</td></tr>
+<tr><td>Γραφείο Δωρεών & Κληροδοτημάτων</td><td>__________</td></tr>
+<tr><td>Γραφείο Πολεοδομίας</td><td>__________</td></tr>
+</table>
 </div>
+</details>
+
+<details>
+<summary>📦 3ο ΤΜΗΜΑ ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ ΕΡΓΩΝ/summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Υλοποίησης Στεγαστικού Προγράμματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Μελετών</td><td>__________</td></tr>
+<tr><td>Γραφείο Κατασκευών</td><td>__________</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>📐 4ο ΤΜΗΜΑ ΑΠΑΛΛΟΤΡΙΩΣΕΩΝ & ΕΠΙΤΑΞΕΩΝ</summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Απαλλοτριώσεων</td><td>__________</td></tr>
+<tr><td>Γραφείο Επιτάξεων</td><td>__________</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>💰 5ο ΤΜΗΜΑ ΟΙΚΟΝΟΜΙΚΩΝ ΥΠΗΡΕΣΙΩΝ</summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Λογιστηρίου</td><td>__________</td></tr>
+<tr><td>Γραφείο Ελέγχου & Εκκαθάρισης Δαπανών</td><td>__________</td></tr>
+<tr><td>Γραφείο Ταμειακής Διαχείρισης και Λογιστικής Παρακολούθησης</td><td>__________</td></tr>
+</table>
+</div>
+</details>
+
+<details>
+<summary>👥 6ο ΤΜΗΜΑ ΔΙΟΙΚΗΤΙΚΩΝ ΥΠΗΡΕΣΙΩΝ</summary>
+<div class="content">
+<table>
+<tr><td>Προϊστάμενος Τμήματος</td><td>__________</td></tr>
+<tr><td>Γραφείο Προσωπικού</td><td>__________</td></tr>
+<tr><td>Γραφείο Ασφαλέιας-Πληροφοριών</td><td>__________</td></tr>
+<tr><td>Γραφείο Υλικοτεχνικής Υποδομής Διοικητικής Μέριμνας</td><td>__________</td></tr>
+<tr><td>Γραφείο Δαπανών</td><td>__________</td></tr>
+<tr><td>Γραφείο Υποστήριξης Πληροφοριακών Συστημάτων</td><td>__________</td></tr>
+<tr><td>Γραφείο Υγείας και Ασφάλειας στην Εργασία</td><td>__________</td></tr>
+</table>
+</div>
+</details>
